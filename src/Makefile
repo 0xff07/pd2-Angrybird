@@ -58,7 +58,8 @@ SOURCES       = main.cpp \
 		yellowbird.cpp \
 		pigweak.cpp \
 		icebird.cpp \
-		whitebird.cpp qrc_res.cpp \
+		whitebird.cpp \
+		contectlistener.cpp qrc_res.cpp \
 		moc_mainwindow.cpp \
 		moc_gameitem.cpp
 OBJECTS       = main.o \
@@ -72,6 +73,7 @@ OBJECTS       = main.o \
 		pigweak.o \
 		icebird.o \
 		whitebird.o \
+		contectlistener.o \
 		qrc_res.o \
 		moc_mainwindow.o \
 		moc_gameitem.o
@@ -273,7 +275,8 @@ DIST          = /Users/main/Qt/5.6/clang_64/mkspecs/features/spec_pre.prf \
 		yellowbird.h \
 		pigweak.h \
 		icebird.h \
-		whitebird.h main.cpp \
+		whitebird.h \
+		contectlistener.h main.cpp \
 		mainwindow.cpp \
 		gameitem.cpp \
 		bird.cpp \
@@ -283,7 +286,8 @@ DIST          = /Users/main/Qt/5.6/clang_64/mkspecs/features/spec_pre.prf \
 		yellowbird.cpp \
 		pigweak.cpp \
 		icebird.cpp \
-		whitebird.cpp
+		whitebird.cpp \
+		contectlistener.cpp
 QMAKE_TARGET  = AngryThing
 DESTDIR       = 
 TARGET        = AngryThing.app/Contents/MacOS/AngryThing
@@ -621,8 +625,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents res.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h Box2D/Collision/Shapes/b2ChainShape.h Box2D/Collision/Shapes/b2CircleShape.h Box2D/Collision/Shapes/b2EdgeShape.h Box2D/Collision/Shapes/b2PolygonShape.h Box2D/Collision/Shapes/b2Shape.h Box2D/Collision/b2BroadPhase.h Box2D/Collision/b2Collision.h Box2D/Collision/b2Distance.h Box2D/Collision/b2DynamicTree.h Box2D/Collision/b2TimeOfImpact.h Box2D/Common/b2BlockAllocator.h Box2D/Common/b2Draw.h Box2D/Common/b2GrowableStack.h Box2D/Common/b2Math.h Box2D/Common/b2Settings.h Box2D/Common/b2StackAllocator.h Box2D/Common/b2Timer.h Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h Box2D/Dynamics/Contacts/b2CircleContact.h Box2D/Dynamics/Contacts/b2Contact.h Box2D/Dynamics/Contacts/b2ContactSolver.h Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h Box2D/Dynamics/Contacts/b2PolygonContact.h Box2D/Dynamics/Joints/b2DistanceJoint.h Box2D/Dynamics/Joints/b2FrictionJoint.h Box2D/Dynamics/Joints/b2GearJoint.h Box2D/Dynamics/Joints/b2Joint.h Box2D/Dynamics/Joints/b2MotorJoint.h Box2D/Dynamics/Joints/b2MouseJoint.h Box2D/Dynamics/Joints/b2PrismaticJoint.h Box2D/Dynamics/Joints/b2PulleyJoint.h Box2D/Dynamics/Joints/b2RevoluteJoint.h Box2D/Dynamics/Joints/b2RopeJoint.h Box2D/Dynamics/Joints/b2WeldJoint.h Box2D/Dynamics/Joints/b2WheelJoint.h Box2D/Dynamics/b2Body.h Box2D/Dynamics/b2ContactManager.h Box2D/Dynamics/b2Fixture.h Box2D/Dynamics/b2Island.h Box2D/Dynamics/b2TimeStep.h Box2D/Dynamics/b2World.h Box2D/Dynamics/b2WorldCallbacks.h Box2D/Rope/b2Rope.h Box2D/Box2D.h gameitem.h bird.h land.h rectangleobstacle.h circularobstacle.h yellowbird.h pigweak.h icebird.h whitebird.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp gameitem.cpp bird.cpp land.cpp rectangleobstacle.cpp circularobstacle.cpp yellowbird.cpp pigweak.cpp icebird.cpp whitebird.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h Box2D/Collision/Shapes/b2ChainShape.h Box2D/Collision/Shapes/b2CircleShape.h Box2D/Collision/Shapes/b2EdgeShape.h Box2D/Collision/Shapes/b2PolygonShape.h Box2D/Collision/Shapes/b2Shape.h Box2D/Collision/b2BroadPhase.h Box2D/Collision/b2Collision.h Box2D/Collision/b2Distance.h Box2D/Collision/b2DynamicTree.h Box2D/Collision/b2TimeOfImpact.h Box2D/Common/b2BlockAllocator.h Box2D/Common/b2Draw.h Box2D/Common/b2GrowableStack.h Box2D/Common/b2Math.h Box2D/Common/b2Settings.h Box2D/Common/b2StackAllocator.h Box2D/Common/b2Timer.h Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h Box2D/Dynamics/Contacts/b2CircleContact.h Box2D/Dynamics/Contacts/b2Contact.h Box2D/Dynamics/Contacts/b2ContactSolver.h Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h Box2D/Dynamics/Contacts/b2PolygonContact.h Box2D/Dynamics/Joints/b2DistanceJoint.h Box2D/Dynamics/Joints/b2FrictionJoint.h Box2D/Dynamics/Joints/b2GearJoint.h Box2D/Dynamics/Joints/b2Joint.h Box2D/Dynamics/Joints/b2MotorJoint.h Box2D/Dynamics/Joints/b2MouseJoint.h Box2D/Dynamics/Joints/b2PrismaticJoint.h Box2D/Dynamics/Joints/b2PulleyJoint.h Box2D/Dynamics/Joints/b2RevoluteJoint.h Box2D/Dynamics/Joints/b2RopeJoint.h Box2D/Dynamics/Joints/b2WeldJoint.h Box2D/Dynamics/Joints/b2WheelJoint.h Box2D/Dynamics/b2Body.h Box2D/Dynamics/b2ContactManager.h Box2D/Dynamics/b2Fixture.h Box2D/Dynamics/b2Island.h Box2D/Dynamics/b2TimeStep.h Box2D/Dynamics/b2World.h Box2D/Dynamics/b2WorldCallbacks.h Box2D/Rope/b2Rope.h Box2D/Box2D.h gameitem.h bird.h land.h rectangleobstacle.h circularobstacle.h yellowbird.h pigweak.h icebird.h whitebird.h contectlistener.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp gameitem.cpp bird.cpp land.cpp rectangleobstacle.cpp circularobstacle.cpp yellowbird.cpp pigweak.cpp icebird.cpp whitebird.cpp contectlistener.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
 
 
@@ -691,6 +695,7 @@ qrc_res.cpp: res.qrc \
 		bird.h \
 		image/BlackBird.png \
 		image/Pig.png \
+		image/Pig_hitted.png \
 		image/YellowBird.png \
 		image/WhiteBird.png \
 		image/field/RectangleObstacle/HOROZONTAL_LARGE_1.png \
@@ -767,6 +772,8 @@ qrc_res.cpp: res.qrc \
 		rectangleobstacle.h \
 		pig.h \
 		yellowbird.h \
+		whitebird.h \
+		icebird.h \
 		/Users/main/Qt/5.6/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/main/Qt/5.6/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
 		Box2D/Box2D.h \
@@ -1378,6 +1385,8 @@ qrc_res.cpp: res.qrc \
 		rectangleobstacle.h \
 		pig.h \
 		yellowbird.h \
+		whitebird.h \
+		icebird.h \
 		gameitem.h \
 		Box2D/Box2D.h \
 		Box2D/Common/b2Settings.h \
@@ -1877,6 +1886,8 @@ qrc_res.cpp: res.qrc \
 		rectangleobstacle.h \
 		pig.h \
 		yellowbird.h \
+		whitebird.h \
+		icebird.h \
 		ui_mainwindow.h \
 		obstacle.h \
 		bird.h \
@@ -2002,6 +2013,8 @@ qrc_res.cpp: res.qrc \
 		rectangleobstacle.h \
 		pig.h \
 		yellowbird.h \
+		whitebird.h \
+		icebird.h \
 		bird.h \
 		gameitem.h \
 		Box2D/Box2D.h \
@@ -2401,6 +2414,8 @@ moc_mainwindow.cpp: /Users/main/Qt/5.6/clang_64/lib/QtWidgets.framework/Headers/
 		rectangleobstacle.h \
 		pig.h \
 		yellowbird.h \
+		whitebird.h \
+		icebird.h \
 		mainwindow.h
 	/Users/main/Qt/5.6/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Users/main/Qt/5.6/clang_64/mkspecs/macx-clang -I/Users/main/Documents/program/82d/Example-code-for-Project-3/src -I/Users/main/Qt/5.6/clang_64/lib/QtWidgets.framework/Headers -I/Users/main/Qt/5.6/clang_64/lib/QtGui.framework/Headers -I/Users/main/Qt/5.6/clang_64/lib/QtCore.framework/Headers -F/Users/main/Qt/5.6/clang_64/lib mainwindow.h -o moc_mainwindow.cpp
 
@@ -2543,6 +2558,8 @@ main.o: main.cpp mainwindow.h \
 		rectangleobstacle.h \
 		pig.h \
 		yellowbird.h \
+		whitebird.h \
+		icebird.h \
 		/Users/main/Qt/5.6/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/main/Qt/5.6/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
@@ -2616,6 +2633,8 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		rectangleobstacle.h \
 		pig.h \
 		yellowbird.h \
+		whitebird.h \
+		icebird.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
@@ -3127,6 +3146,64 @@ whitebird.o: whitebird.cpp whitebird.h \
 		/Users/main/Qt/5.6/clang_64/lib/QtCore.framework/Headers/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o whitebird.o whitebird.cpp
 
+contectlistener.o: contectlistener.cpp contectlistener.h \
+		bird.h \
+		gameitem.h \
+		Box2D/Box2D.h \
+		Box2D/Common/b2Settings.h \
+		Box2D/Common/b2Draw.h \
+		Box2D/Common/b2Math.h \
+		Box2D/Common/b2Timer.h \
+		Box2D/Collision/Shapes/b2CircleShape.h \
+		Box2D/Collision/Shapes/b2Shape.h \
+		Box2D/Common/b2BlockAllocator.h \
+		Box2D/Collision/b2Collision.h \
+		Box2D/Collision/Shapes/b2EdgeShape.h \
+		Box2D/Collision/Shapes/b2ChainShape.h \
+		Box2D/Collision/Shapes/b2PolygonShape.h \
+		Box2D/Collision/b2BroadPhase.h \
+		Box2D/Collision/b2DynamicTree.h \
+		Box2D/Common/b2GrowableStack.h \
+		Box2D/Collision/b2Distance.h \
+		Box2D/Collision/b2TimeOfImpact.h \
+		Box2D/Dynamics/b2Body.h \
+		Box2D/Dynamics/b2Fixture.h \
+		Box2D/Dynamics/b2WorldCallbacks.h \
+		Box2D/Dynamics/b2TimeStep.h \
+		Box2D/Dynamics/b2World.h \
+		Box2D/Common/b2StackAllocator.h \
+		Box2D/Dynamics/b2ContactManager.h \
+		Box2D/Dynamics/Contacts/b2Contact.h \
+		Box2D/Dynamics/Joints/b2DistanceJoint.h \
+		Box2D/Dynamics/Joints/b2Joint.h \
+		Box2D/Dynamics/Joints/b2FrictionJoint.h \
+		Box2D/Dynamics/Joints/b2GearJoint.h \
+		Box2D/Dynamics/Joints/b2MotorJoint.h \
+		Box2D/Dynamics/Joints/b2MouseJoint.h \
+		Box2D/Dynamics/Joints/b2PrismaticJoint.h \
+		Box2D/Dynamics/Joints/b2PulleyJoint.h \
+		Box2D/Dynamics/Joints/b2RevoluteJoint.h \
+		Box2D/Dynamics/Joints/b2RopeJoint.h \
+		Box2D/Dynamics/Joints/b2WeldJoint.h \
+		Box2D/Dynamics/Joints/b2WheelJoint.h \
+		/Users/main/Qt/5.6/clang_64/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
+		/Users/main/Qt/5.6/clang_64/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		/Users/main/Qt/5.6/clang_64/lib/QtGui.framework/Headers/QPainter \
+		/Users/main/Qt/5.6/clang_64/lib/QtGui.framework/Headers/qpainter.h \
+		/Users/main/Qt/5.6/clang_64/lib/QtGui.framework/Headers/QTransform \
+		/Users/main/Qt/5.6/clang_64/lib/QtGui.framework/Headers/qtransform.h \
+		/Users/main/Qt/5.6/clang_64/lib/QtCore.framework/Headers/QtMath \
+		/Users/main/Qt/5.6/clang_64/lib/QtCore.framework/Headers/qmath.h \
+		/Users/main/Qt/5.6/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Users/main/Qt/5.6/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		/Users/main/Qt/5.6/clang_64/lib/QtGui.framework/Headers/QPixmap \
+		/Users/main/Qt/5.6/clang_64/lib/QtGui.framework/Headers/qpixmap.h \
+		/Users/main/Qt/5.6/clang_64/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		/Users/main/Qt/5.6/clang_64/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		/Users/main/Qt/5.6/clang_64/lib/QtCore.framework/Headers/QTimer \
+		/Users/main/Qt/5.6/clang_64/lib/QtCore.framework/Headers/qtimer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o contectlistener.o contectlistener.cpp
+
 qrc_res.o: qrc_res.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_res.o qrc_res.cpp
 
@@ -3198,7 +3275,9 @@ moc_mainwindow.o: moc_mainwindow.cpp mainwindow.h \
 		circularobstacle.h \
 		rectangleobstacle.h \
 		pig.h \
-		yellowbird.h
+		yellowbird.h \
+		whitebird.h \
+		icebird.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 moc_gameitem.o: moc_gameitem.cpp gameitem.h \

@@ -7,5 +7,11 @@ PigWeak::PigWeak(SAME_AS_BIRD):Bird(BIRD_VARIABLES)
 
 void PigWeak::behavior()
 {
-  return;
+    return;
+}
+
+void PigWeak::collision()
+{
+     qDebug() << "in collision";
+     qt_body.setPixmap(QPixmap(":/image/Pig_hitted.png").scaled(64, 64));
 }

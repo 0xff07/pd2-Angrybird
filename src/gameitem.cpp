@@ -61,6 +61,11 @@ void GameItem::paint()
     qt_body.setRotation(-(b2d_body->GetAngle()*180/3.14159));
 }
 
+void GameItem::collision()
+{
+
+}
+
 b2CircleShape GameItem::setCirlularShape(double radius)
 {
     b2CircleShape shapeSpect;

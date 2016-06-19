@@ -48,5 +48,6 @@
         <file>ui_mainwindow.h</file>
         <file>yellowbird.cpp</file>
         <file>yellowbird.h</file>
+        <file>image/Pig_hitted.png</file>
     </qresource>
 </RCC>

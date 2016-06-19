@@ -8,9 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     // Enable the event Filter
     qApp->installEventFilter(this);
-
+    detecter = new ContectListener;
+    world->SetContactListener(detecter);
     mousePressState = 0;
-    maxBirdNum = 2;
+    maxBirdNum = 4;
+
 
 }
 
@@ -54,12 +56,12 @@ void MainWindow::showEvent(QShowEvent *)
     birdList.push_back((Bird*)IBird);
 
 
-    WhiteBird *WBird = new WhiteBird(0.0f + BIRD_SIZE, FLOOR_HEIGHT * 1.5 , BIRD_SIZE, BIRD_SIZE,
+    WhiteBird *WBird = new WhiteBird(0.0f, FLOOR_HEIGHT * 1.5 , BIRD_SIZE, BIRD_SIZE,
                                  BIRD_DENSITY , 0.2, 0.5, 3,
                              &timer,QPixmap(":/image/WhiteBird.png").scaled(64, 64),
                              world,scene);
     birdList.push_back((Bird*)WBird);
-
+    focus = birdList.begin();
 
     setGameScene();
 
@@ -99,12 +101,24 @@ bool MainWindow::eventFilter(QObject *, QEvent *event)
           mousePressState = 0;
           b2Vec2 displacement(mouseClickPos.x() - mouseReleasePos.x(),
                               mouseClickPos.y() - mouseReleasePos.y());
+
           if(Bird::currentBirdNo < maxBirdNum){
-             QList<Bird*>::iterator it = birdList.begin() + Bird::currentBirdNo;
-             (*it) -> setLinearVelocity(b2Vec2(displacement.x * 10, displacement.y * 10 * -1));
-             (*it) -> setGravityEffect(9.8);
-             (*it) -> shooted = 1;
-             Bird::currentBirdNo++;
+             if(!((*focus)->shooted)){
+               QList<Bird*>::iterator it = birdList.begin() + Bird::currentBirdNo;
+               (*it) -> setLinearVelocity(b2Vec2(displacement.x * 10, displacement.y * 10 * -1));
+               (*it) -> setGravityEffect(9.8);
+               (*it) -> shooted = 1;
+               Bird::currentBirdNo++;
+               //focus++;
+             }
+             else if(!((*focus)->skillUsed)){
+                 (*focus)->behavior();
+                 (*focus)->skillUsed = 1;
+                 focus++;
+             }
+
+             qDebug() << Bird::currentBirdNo;
+
           }
         }
 
@@ -143,10 +157,12 @@ void MainWindow::setGameScene()
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
+    /*
      QList<Bird*>::iterator it = birdList.begin() + Bird::currentBirdNo;
-     if(!((*it)->skillUsed)){
+     if(!((*it)->skillUsed) && (*it)->shooted){
          (*it)->behavior();
      }
+     */
 }
 
 

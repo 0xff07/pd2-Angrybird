@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     yellowbird.cpp \
     pigweak.cpp \
     icebird.cpp \
-    whitebird.cpp
+    whitebird.cpp \
+    contectlistener.cpp
 
 HEADERS  += mainwindow.h \
     Box2D/Collision/Shapes/b2ChainShape.h \
@@ -80,7 +81,8 @@ HEADERS  += mainwindow.h \
     yellowbird.h \
     pigweak.h \
     icebird.h \
-    whitebird.h
+    whitebird.h \
+    contectlistener.h
 
 FORMS    += mainwindow.ui
 

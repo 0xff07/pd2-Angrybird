@@ -26,11 +26,11 @@ public:
 
      void setQtInterface(QPixmap pixmap, float w, float h);
      void setB2dInterface(float x, float y, float w, float h, float density, float friction, float restitution, float angleDamp);
-
+     //virtual void behavior();
 
 public slots:
     void paint();
-    // TODO virtual void collide();
+    virtual void collision();
 
 protected:
     b2Body *b2d_body;

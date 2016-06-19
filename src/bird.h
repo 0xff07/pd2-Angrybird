@@ -22,14 +22,17 @@ public:
     void setLinearVelocity(b2Vec2 velocity);
     void setGravityEffect(float parameter);
     b2Vec2 getVelocity() const;
+
     static int currentBirdNo;
 
     void setQtInterface(QPixmap pixmap, float w, float h);
     void setB2dInterface(float x, float y, float w, float h, float density, float friction, float restitution, float angleDamp);
 
     virtual void behavior();
+    virtual void collision();
     int shooted;
     int skillUsed;
+
 
 
 

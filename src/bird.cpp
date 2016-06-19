@@ -67,6 +67,16 @@ void Bird::setB2dInterface(float x, float y, float w, float h, float density, fl
     b2d_body->CreateFixture(&physicalSpec);
 }
 
+void Bird::behavior()
+{
+
+}
+
+void Bird::collision()
+{
+ qDebug() << "from bird";
+}
+
 
 
 void Bird::setLinearVelocity(b2Vec2 velocity)

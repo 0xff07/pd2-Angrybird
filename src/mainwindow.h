@@ -21,6 +21,7 @@
 #include "yellowbird.h"
 #include "whitebird.h"
 #include "icebird.h"
+#include "contectlistener.h"
 
 #define WORLD_WIDTH 160
 #define WORLD_HEIGHT 100
@@ -70,6 +71,9 @@ private:
     QTimer timer;
     int mousePressState;
     int maxBirdNum;
+    QList<Bird*>::iterator focus;
+    ContectListener* detecter;
+
 };
 
 #endif // MAINWINDOW_H
