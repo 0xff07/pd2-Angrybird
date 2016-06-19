@@ -16,7 +16,13 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     gameitem.cpp \
     bird.cpp \
-    land.cpp
+    land.cpp \
+    rectangleobstacle.cpp \
+    circularobstacle.cpp \
+    yellowbird.cpp \
+    pigweak.cpp \
+    icebird.cpp \
+    whitebird.cpp
 
 HEADERS  += mainwindow.h \
     Box2D/Collision/Shapes/b2ChainShape.h \
@@ -68,7 +74,13 @@ HEADERS  += mainwindow.h \
     Box2D/Box2D.h \
     gameitem.h \
     bird.h \
-    land.h
+    land.h \
+    rectangleobstacle.h \
+    circularobstacle.h \
+    yellowbird.h \
+    pigweak.h \
+    icebird.h \
+    whitebird.h
 
 FORMS    += mainwindow.ui
 
